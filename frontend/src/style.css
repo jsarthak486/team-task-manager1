@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f8; color: #222; }
+a { color: white; text-decoration: none; margin-right: 18px; }
+button { cursor: pointer; border: none; background: #2563eb; color: white; padding: 10px 14px; border-radius: 8px; }
+input, select { width: 100%; padding: 11px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; }
+.navbar { background: #111827; color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+.navbar h2 { margin: 0; }
+.navbar span { margin-right: 15px; }
+.auth-box { max-width: 420px; margin: 70px auto; background: white; padding: 28px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.auth-box a { color: #2563eb; }
+.page { padding: 28px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.card, .item, .form { background: white; padding: 20px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.card h2 { font-size: 36px; margin: 0; }
+.form { margin-bottom: 22px; max-width: 700px; }
+.list { display: grid; gap: 14px; }
+.error { color: red; }
