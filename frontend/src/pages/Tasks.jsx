@@ -24,7 +24,7 @@ export default function Tasks() {
     setProjects(p.data);
 
     if (user?.role === "Admin") {
-      const u = await api.get("/auth/users");
+      const u = await api.get("/api/auth/users");
       setUsers(u.data);
     }
   };
