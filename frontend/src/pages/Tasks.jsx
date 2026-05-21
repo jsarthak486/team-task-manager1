@@ -36,7 +36,7 @@ export default function Tasks() {
   const createTask = async (e) => {
     e.preventDefault();
 
-    await api.post("/apitasks", form);
+    await api.post("/api/tasks", form);
 
     setForm({
       title: "",
