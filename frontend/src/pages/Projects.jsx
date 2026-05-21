@@ -11,7 +11,7 @@ export default function Projects() {
   });
 
   const load = async () => {
-    const res = await api.get("/projects");
+    const res = await api.get("/api/projects");
     setProjects(res.data);
   };
 

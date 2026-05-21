@@ -6,7 +6,7 @@ export default function Dashboard() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    api.get("/dashboard").then((res) => setStats(res.data));
+    api.get("/api/dashboard").then((res) => setStats(res.data));
   }, []);
 
   if (!stats) return <p className="page">Loading...</p>;

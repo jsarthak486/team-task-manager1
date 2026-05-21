@@ -17,10 +17,10 @@ export default function Tasks() {
   });
 
   const load = async () => {
-    const t = await api.get("/tasks");
+    const t = await api.get("/api/tasks");
     setTasks(t.data);
 
-    const p = await api.get("/projects");
+    const p = await api.get("/api/projects");
     setProjects(p.data);
 
     if (user?.role === "Admin") {
@@ -36,7 +36,7 @@ export default function Tasks() {
   const createTask = async (e) => {
     e.preventDefault();
 
-    await api.post("/tasks", form);
+    await api.post("/apitasks", form);
 
     setForm({
       title: "",
@@ -50,7 +50,7 @@ export default function Tasks() {
   };
 
   const updateStatus = async (id, status) => {
-    await api.put(`/tasks/${id}/status`, { status });
+    await api.put(`/api/tasks/${id}/status`, { status });
     load();
   };
 
@@ -61,7 +61,7 @@ export default function Tasks() {
 
     if (!confirmDelete) return;
 
-    await api.delete(`/tasks/${id}`);
+    await api.delete(`/api/tasks/${id}`);
     load();
   };
 
