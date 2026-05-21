@@ -1,24 +1,17 @@
-import axios from "axios";
+import React, { createContext, useContext, useState } from "react";
 
-const api = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    "https://team-task-manager1-six.vercel.app",
-});
+const AuthContext = createContext(null);
 
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-export default api;
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
