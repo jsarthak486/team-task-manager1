@@ -22,7 +22,7 @@ export default function Projects() {
   const createProject = async (e) => {
     e.preventDefault();
 
-    await api.post("/projects", form);
+    await api.post("/apiprojects", form);
 
     setForm({
       title: "",
