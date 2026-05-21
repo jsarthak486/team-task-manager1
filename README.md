@@ -5,6 +5,7 @@ A full-stack MERN application for managing projects, assigning tasks, and tracki
 ## Features
 
 ### Authentication
+
 - User Signup & Login
 - JWT Authentication
 - Protected Routes
@@ -13,27 +14,32 @@ A full-stack MERN application for managing projects, assigning tasks, and tracki
 ### Role-Based Access
 
 #### Admin
+
 - Create Projects
 - Create Tasks
 - Assign Tasks to Members
 - View Dashboard Analytics
 
 #### Member
+
 - View Assigned Tasks
 - Update Task Status
 
 ### Project Management
+
 - Create Projects
 - View All Projects
 - Track Team Members
 
 ### Task Management
+
 - Create Tasks
 - Assign Tasks
 - Update Task Status
 - Due Date Tracking
 
 ### Dashboard
+
 - Total Tasks
 - Pending Tasks
 - In Progress Tasks
@@ -43,12 +49,14 @@ A full-stack MERN application for managing projects, assigning tasks, and tracki
 ## Tech Stack
 
 ### Frontend
+
 - React.js
 - React Router DOM
 - Axios
 - CSS
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB
@@ -61,7 +69,7 @@ A full-stack MERN application for managing projects, assigning tasks, and tracki
 ### Clone Repository
 
 ```bash
-git clone https://github.com/sam10052004/team-task-manager.git
+git clone https://github.com/jsarthak486/team-task-manager1.git
 ```
 
 ### Backend Setup
@@ -83,23 +91,28 @@ npm run dev
 ## API Routes
 
 ### Authentication
+
 - POST /auth/signup
 - POST /auth/login
 - GET /auth/users
 
 ### Projects
+
 - GET /projects
 - POST /projects
 
 ### Tasks
+
 - GET /tasks
 - POST /tasks
 - PUT /tasks/:id/status
 
 ### Dashboard
+
 - GET /dashboard/stats
 
 ## Future Improvements
+
 - Email Notifications
 - Team Chat
 - Activity Logs
@@ -108,7 +121,7 @@ npm run dev
 
 ## Author
 
-Saumya Mathur
+Sarthak jain
 
 GitHub:
-https://github.com/sam10052004
+https://github.com/jsarthak486
