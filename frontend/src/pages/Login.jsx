@@ -1,51 +1,63 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
 
-export default function Login() {
-  const [form, setForm] = useState({
+const Login = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const [error, setError] = useState("");
 
-  const submit = async (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await api.post("/api/auth/login", form);
+      const { data } = await api.post("/api/auth/login", formData);
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      console.log(err);
+      setError("Login failed");
     }
   };
 
   return (
-    <div className="auth-box">
+    <div className="auth-container">
       <h1>Login</h1>
 
       {error && <p className="error">{error}</p>}
 
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          value={formData.email}
+          onChange={handleChange}
           required
         />
 
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
+          value={formData.password}
+          onChange={handleChange}
           required
         />
 
@@ -57,4 +69,6 @@ export default function Login() {
       </p>
     </div>
   );
-}
+};
+
+export default Login;
