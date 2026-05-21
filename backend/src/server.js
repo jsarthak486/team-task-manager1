@@ -1,22 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
-dotenv.config();
-
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Team Task Manager API is running");
+  res.status(200).json({
+    message: "Team Task Manager API is running",
+  });
 });
 
 app.use("/api/auth", authRoutes);
@@ -28,15 +34,17 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
-
-    const PORT = process.env.PORT || 5000;
-
-    if (process.env.NODE_ENV !== "production") {
-      app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-      });
-    }
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log("MongoDB Connection Error:", err);
+  });
+
+const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 module.exports = app;
